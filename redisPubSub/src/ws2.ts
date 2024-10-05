@@ -2,14 +2,14 @@ import express from 'express';
 import { WebSocketServer } from 'ws';
 import { redisPubSubManager } from './pub'; 
 
+export function startWs2( userId: string, roomId: string) {
+    console.log('Starting WebSocket server 2...');
 const app = express();
 const httpServer = app.listen(8082);
 
 const wss = new WebSocketServer({ server: httpServer });
 
 wss.on('connection', async function connection(ws) {
-    const userId = "user2"; 
-    const roomId = "room1"; 
 
     console.log(`User ${userId} connected and subscribing to room ${roomId}...`);
 
@@ -40,3 +40,5 @@ wss.on('connection', async function connection(ws) {
         await redisPubSubManager.disconnect();
     });
 });
+
+}

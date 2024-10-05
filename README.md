@@ -4,13 +4,13 @@
 ```
 /app
 │
-├── /server
+├── /redisPubSub/src
 │   ├── index.ts         # Main entry point for the server
 │   ├── wsHandler.ts     # WebSocket handling logic
 │   ├── pubsubHandler.ts # Redis Pub/Sub logic
 │   └── roomManager.ts   # Room management (create/join room)
 │
-├── /client
+├── /frontendws
 │   ├── index.html       # Frontend for connecting to chat rooms
 │   ├── app.js           #Frontend ws client logic
 

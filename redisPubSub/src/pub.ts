@@ -59,6 +59,8 @@ class RedisPubSubManager {
             content: `User ${userId} has left the room.`
         }));
 
+        await this.subClient.unsubscribe(userId);
+
         await this.subClient.unsubscribe(roomId);
     }
 
