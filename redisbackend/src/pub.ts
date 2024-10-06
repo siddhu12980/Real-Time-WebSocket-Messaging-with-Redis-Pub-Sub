@@ -10,11 +10,11 @@ class RedisPubSubManager {
    
     
     this.subClient = createClient({
-      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}` // Correct way to pass host and port
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}` 
     });
 
     this.pubClient = createClient({
-      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}` // Correct way to pass host and port
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}` 
     });
 
     this.subClient.on('error', (err) => console.error('Redis Subscriber Error', err));
