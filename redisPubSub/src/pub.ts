@@ -54,11 +54,12 @@ class RedisPubSubManager {
     unsubscribeUser = async (userId: string, roomId: string) => {
         await this.ensureRedisConnection();
 
-        await this.sendMessage(roomId, ({
-            recipient: 'all',
-            content: `User ${userId} has left the room.`
-        }));
-
+  await this.sendMessage(roomId, {
+//      type: "system",
+      sender: "server",
+      recipient: "all",
+      content: `User ${userId} has left the room.`
+    });
         await this.subClient.unsubscribe(userId);
 
         await this.subClient.unsubscribe(roomId);
