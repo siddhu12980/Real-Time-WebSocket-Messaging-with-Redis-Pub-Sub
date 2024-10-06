@@ -35,7 +35,7 @@ services:
       - my-redis 
 
   frontend:
-    build: ./frontendws/
+    build: ./frontend
     ports:
       - "3001:3000"
     environment:

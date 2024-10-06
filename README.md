@@ -10,7 +10,7 @@
 │   ├── pubsubHandler.ts # Redis Pub/Sub logic
 │   └── roomManager.ts   # Room management (create/join room)
 │
-├── /frontendws
+├── /frontend
 │   ├── index.html       # Frontend for connecting to chat rooms
 │   ├── app.js           #Frontend ws client logic
 
