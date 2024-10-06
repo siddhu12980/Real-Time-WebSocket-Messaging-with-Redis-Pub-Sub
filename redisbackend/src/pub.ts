@@ -7,9 +7,19 @@ class RedisPubSubManager {
 
     private constructor() {
         console.log('RedisPubSubManager created');
-        this.subClient = createClient();
-        this.pubClient = createClient();
-    }
+   
+    
+    this.subClient = createClient({
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}` // Correct way to pass host and port
+    });
+
+    this.pubClient = createClient({
+      url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}` // Correct way to pass host and port
+    });
+
+    this.subClient.on('error', (err) => console.error('Redis Subscriber Error', err));
+    this.pubClient.on('error', (err) => console.error('Redis Publisher Error', err));
+  }
 
     public static getInstance(): RedisPubSubManager {
         if (!RedisPubSubManager._instance) {
