@@ -10,25 +10,29 @@ services:
     depends_on:
       - websocket1
       - websocket2
-      - my-redis  # Add dependency for Redis
+      - my-redis 
 
   websocket1:
-    build: ./redisbackend
+    build: 
+      context: ./redisbackend
+      target: production 
     environment:
-      - PORT=8082
+      - PORT=8081
       - REDIS_HOST=my-redis
       - REDIS_PORT=6379
     depends_on:
-      - my-redis  # Ensure websocket depends on Redis
+      - my-redis
 
   websocket2:
-    build: ./redisbackend/
+    build:
+      context: ./redisbackend
+      target: production  
     environment:
-      - PORT=8082
+      - PORT=8082 
       - REDIS_HOST=my-redis
       - REDIS_PORT=6379
     depends_on:
-      - my-redis  # Ensure websocket depends on Redis
+      - my-redis 
 
   frontend:
     build: ./frontendws/
@@ -40,4 +44,4 @@ services:
   my-redis:
     image: "redis:latest"
     ports:
-      - "6379:6379"  # Expose the default Redis port
+      - "6379:6379"
